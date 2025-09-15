@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class FileHandlingActivity {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // Your code here
         
         // a. Create main directory
@@ -10,7 +10,16 @@ public class FileHandlingActivity {
 
 
         // b. Create three text files
-        
+        File note = new File("notes.txt");
+        note.createNewFile();
+
+        File data = new File("data.txt");
+        data.createNewFile();
+
+        File log = new File("log.txt");
+        log.createNewFile();
+
+
         // c. Write messages to files
         
         // d. Read and display file contents
