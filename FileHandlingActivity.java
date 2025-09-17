@@ -1,5 +1,6 @@
 import java.io.*;
 
+
 public class FileHandlingActivity {
     public static void main(String[] args) throws IOException {
         // Your code here
@@ -21,6 +22,19 @@ public class FileHandlingActivity {
 
 
         // c. Write messages to files
+
+            FileWriter writer = new FileWriter(note);
+            writer.write("Here is my special note.");
+            writer.close();
+            
+            FileWriter writer2 = new FileWriter(data);
+            writer2.write("Here is my second special note");
+            writer2.close(); 
+
+            FileWriter writer3 = new FileWriter(log);
+            writer3.write("Here is my third special note");
+            writer3.close(); 
+
         
         // d. Read and display file contents
         
