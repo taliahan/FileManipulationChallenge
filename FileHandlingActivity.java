@@ -58,6 +58,9 @@ public class FileHandlingActivity {
         listFiles(directory);
         listFiles(backupDir);
 
+        // Activity 3
+        // calling debugfile
+        debugFileOperation();
     }
     
     public static void readContent(File file) throws FileNotFoundException, IOException {
@@ -88,15 +91,31 @@ public class FileHandlingActivity {
     
     public static void listFiles(File dir) {
         System.out.println("Files in " + dir);
-        File[] files = dir.listFiles();   
+        File[] files = dir.listFiles();
         if (files != null) {
             for (File f : files) {
                 System.out.println(f.getName());
             }
         }
         System.out.println();
-}
+    }
 
+
+
+    public static void debugFileOperation() {
+        try {
+    // Fixed: creating file inside JavaFileSystem directory
+        File file = new File("JavaFileSystem/fileName.txt");
+    
+    // Attempting to write to the invalid file
+    FileWriter writer = new FileWriter(file);
+    writer.write("Will this fail?");
+    writer.close();
+} catch (IOException e) {
+    System.out.println("An error occurred: " + e.getMessage());
+    e.printStackTrace(); 
+}
+    }
 
 
     
