@@ -54,8 +54,10 @@ public class FileHandlingActivity {
         }
 
 
-
         // g. List all files in both directories
+        listFiles(directory);
+        listFiles(backupDir);
+
     }
     
     public static void readContent(File file) throws FileNotFoundException, IOException {
@@ -71,18 +73,30 @@ public class FileHandlingActivity {
     }
     
     public static void copyFile(File old, BufferedWriter bw) throws IOException {
-            try (FileReader fr = new FileReader(old);
-                    BufferedReader br = new BufferedReader(fr)) {
-                        bw.write("..." + old.getName() + "...\n");
-                        String line = br.readLine();
-                        while (line != null) {
-                            bw.write(line);
-                            bw.newLine();  
-                            line = br.readLine();
-                        }
+        try (FileReader fr = new FileReader(old);
+                BufferedReader br = new BufferedReader(fr)) {
+            bw.write("..." + old.getName() + "...\n");
+            String line = br.readLine();
+            while (line != null) {
+                bw.write(line);
+                bw.newLine();
+                line = br.readLine();
+            }
         }
 
     }
+    
+    public static void listFiles(File dir) {
+        System.out.println("Files in " + dir);
+        File[] files = dir.listFiles();   
+        if (files != null) {
+            for (File f : files) {
+                System.out.println(f.getName());
+            }
+        }
+        System.out.println();
+}
+
 
 
     
