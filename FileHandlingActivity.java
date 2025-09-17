@@ -44,6 +44,16 @@ public class FileHandlingActivity {
 
 
         // f. Copy contents to backup file
+        File backupF = new File(backupDir, "backup.txt");
+
+        try (FileWriter fw = new FileWriter(backupF);
+            BufferedWriter bw = new BufferedWriter(fw)) {
+                copyFile(note, bw);
+                copyFile(data, bw);
+                copyFile(log, bw);
+        }
+
+
 
         // g. List all files in both directories
     }
@@ -59,6 +69,22 @@ public class FileHandlingActivity {
             }
         }
     }
+    
+    public static void copyFile(File old, BufferedWriter bw) throws IOException {
+            try (FileReader fr = new FileReader(old);
+                    BufferedReader br = new BufferedReader(fr)) {
+                        bw.write("..." + old.getName() + "...\n");
+                        String line = br.readLine();
+                        while (line != null) {
+                            bw.write(line);
+                            bw.newLine();  
+                            line = br.readLine();
+                        }
+        }
+
+    }
+
+
     
 
 
