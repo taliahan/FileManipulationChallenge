@@ -11,13 +11,13 @@ public class FileHandlingActivity {
 
 
         // b. Create three text files
-        File note = new File("notes.txt");
+        File note = new File(directory, "notes.txt");
         note.createNewFile();
 
-        File data = new File("data.txt");
+        File data = new File(directory, "data.txt");
         data.createNewFile();
 
-        File log = new File("log.txt");
+        File log = new File(directory, "log.txt");
         log.createNewFile();
 
 
